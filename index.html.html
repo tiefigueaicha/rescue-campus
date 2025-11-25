@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Données Partiellement Récupérées</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+            padding: 40px;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .glitch {
+            color: #d32f2f;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: glitch 2s infinite;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { text-shadow: 2px 2px 0 #00ff00, -2px -2px 0 #ff00ff; }
+            25% { text-shadow: -2px 2px 0 #00ff00, 2px -2px 0 #ff00ff; }
+            50% { text-shadow: 2px -2px 0 #00ff00, -2px 2px 0 #ff00ff; }
+            75% { text-shadow: -2px -2px 0 #00ff00, 2px 2px 0 #ff00ff; }
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-icon {
+            color: #ffc107;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .loading {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .loading-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            width: 67%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .content {
+            line-height: 1.8;
+            color: #333;
+            font-size: 16px;
+            margin: 25px 0;
+        }
+        
+        .hidden-text {
+            color: #f5f5f5;
+            background: #f5f5f5;
+            user-select: text;
+            padding: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .hidden-text:hover {
+            background: #fff9c4;
+        }
+        
+        .hint {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #1565c0;
+        }
+        
+        .timestamp {
+            text-align: right;
+            color: #757575;
+            font-size: 12px;
+            margin-top: 30px;
+            font-style: italic;
+        }
+        
+        .system-message {
+            font-family: 'Courier New', monospace;
+            background: #263238;
+            color: #4caf50;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        .blink {
+            animation: blink 1s step-start infinite;
+        }
+        
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="glitch">⚠️ SYSTÈME EN COURS DE RESTAURATION ⚠️</h1>
+        
+        <div class="warning">
+            <span class="warning-icon">⚠</span>
+            <strong>État du système :</strong> Instable
+        </div>
+        
+        <div class="loading">
+            <p><strong>Récupération des données en cours...</strong></p>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p style="color: #757575; font-size: 14px;">67% complété</p>
+        </div>
+        
+        <div class="system-message">
+            <p>> Tentative de connexion au serveur central...</p>
+            <p>> Connexion établie [OK]</p>
+            <p>> Chargement de la base de données...</p>
+            <p>> ERREUR : Fichiers corrompus détectés</p>
+            <p>> Tentative de restauration partielle... <span class="blink">█</span></p>
+        </div>
+        
+        <div class="content">
+            <p><strong>Données partiellement récupérées</strong></p>
+            <p>Les systèmes informatiques sont instables… Nous essayons de restaurer la liste des admis.</p>
+            <p>Certaines données ont été fragmentées lors de l'incident. Une restauration complète est en cours.</p>
+            <p style="margin-top: 20px;">
+                <span class="hidden-text">Regardez l'affiche des horaires sur le panneau central. Le chiffre entouré est le premier code.</span>
+            </p>
+        </div>
+        
+        <div class="hint">
+            <strong>💡 Astuce :</strong> Sélectionnez tout le texte de cette page (Ctrl+A / Cmd+A) pour révéler d'éventuelles informations cachées dans les fragments de données restaurées.
+        </div>
+        
+        <div class="timestamp">
+            Dernière mise à jour : [CORRUPTED] - Système ID: ARG-2025
+        </div>
+    </div>
+</body>
+</html>
