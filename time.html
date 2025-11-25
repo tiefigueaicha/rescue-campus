@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeSpice - Chargement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #001529;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        
+        .logo-container {
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .logo {
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .loading-container {
+            margin-top: 60px;
+        }
+        
+        .loading-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4a90e2, #63b3ed);
+            border-radius: 10px;
+            animation: fillBar 10s linear forwards;
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.6);
+        }
+        
+        @keyframes fillBar {
+            from {
+                width: 0%;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        
+        .countdown {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            margin-top: 10px;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .dots {
+            display: inline-block;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        /* Animation de glitch subtile */
+        .logo:hover {
+            animation: glitch 0.3s;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { 
+                transform: translate(0);
+            }
+            25% { 
+                transform: translate(-2px, 2px);
+            }
+            75% { 
+                transform: translate(2px, -2px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo">TimeSpice✦</div>
+        
+        <div class="loading-container">
+            <!-- <div class="loading-text">Connexion au système<span class="dots">...</span></div> -->
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="countdown" id="countdown">Redirection dans <span id="timer">20</span>s</div>
+        </div>
+    </div>
+    
+    <script>
+        // Compte à rebours
+        let timeLeft = 20;
+        const timerElement = document.getElementById('timer');
+        
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+            }
+        }, 1000);
+        
+        // Redirection après 10 secondes
+        setTimeout(() => {
+            window.location.href ='index.html';
+        }, 10000);
+    </script>
+</body>
+</html>
